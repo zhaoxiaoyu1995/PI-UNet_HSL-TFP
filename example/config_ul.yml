@@ -1,0 +1,41 @@
+# config
+
+# dataset path
+data_root: /mnt/zhaoxiaoyu_data/data/layout_data/ul/200x200_0.045_0.055/complex_component/FDM
+train_dir: train
+val_dir: train
+test_dir: train
+train_list: /mnt/zhaoxiaoyu_data/data/layout_data/ul/train.txt
+val_list: /mnt/zhaoxiaoyu_data/data/layout_data/ul/val.txt
+test_list: /mnt/zhaoxiaoyu_data/data/layout_data/ul/test.txt
+
+# dataset properties
+load_name: F # F, list
+length: 0.1
+nx: 200 # select from [50, 100, 150, 200, 400, 800]
+u_D: 298
+seed: 34
+bcs:
+#  - [[0, 0.15],[0, 0.25]]
+#  - [[0.0400, 0.0], [0.0600, 0.0]]
+#  - [[0.0495, 0.0], [0.0505, 0.0]]
+  - [[0.0450, 0.0], [0.0550, 0.0]]
+#  - [[]]
+
+batch_size: 1
+max_epochs: 30
+lr: 0.01
+# number of gpus to use
+gpus: 3
+val_check_interval: 1.0
+# num_workers in dataloader
+num_workers: 4
+
+# preprocessing of data
+# input
+mean_layout: 0
+std_layout: 10000
+# output
+# mean_heat: 0
+# std_heat: 1
+
