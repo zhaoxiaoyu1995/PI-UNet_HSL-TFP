@@ -58,13 +58,13 @@ def parses_ul(config_path):
     # training params (opt)
     parser.add_argument("--lr", default="0.01", type=float)
     parser.add_argument("--batch_size", default=16, type=int)
-    parser.add_argument("--num_workers", default=2, type=int, help="num_workers in DataLoader",)
+    parser.add_argument("--num_workers", default=2, type=int, help="num_workers in DataLoader", )
 
     # dataset params
     parser.add_argument("--nx", type=int)
     parser.add_argument("--length", type=float)
     parser.add_argument("--u_D", type=float)
-    parser.add_argument("--bcs", type=yaml.safe_load, action="append", help="Dirichlet boundaries",)
+    parser.add_argument("--bcs", type=yaml.safe_load, action="append", help="Dirichlet boundaries", )
 
     args = parser.parse_args()
     return args

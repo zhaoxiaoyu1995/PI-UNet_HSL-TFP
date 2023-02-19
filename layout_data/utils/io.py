@@ -12,5 +12,3 @@ def load_mat(path):
 def load_h5(path):
     h5file = h5py.File(path, "r")
     return h5file
-
-

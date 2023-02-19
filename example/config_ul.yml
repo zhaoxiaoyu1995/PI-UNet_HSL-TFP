@@ -1,13 +1,13 @@
 # config
 
 # dataset path
-data_root: /mnt/zhaoxiaoyu_data/data/layout_data/ul/200x200_0.045_0.055/complex_component/FDM
+data_root: /mnt/jfs/zhaoxiaoyu/data/ul/complex_component/FDM
 train_dir: train
 val_dir: train
 test_dir: train
-train_list: /mnt/zhaoxiaoyu_data/data/layout_data/ul/train.txt
-val_list: /mnt/zhaoxiaoyu_data/data/layout_data/ul/val.txt
-test_list: /mnt/zhaoxiaoyu_data/data/layout_data/ul/test.txt
+train_list: /mnt/jfs/zhaoxiaoyu/data/ul/train.txt
+val_list: /mnt/jfs/zhaoxiaoyu/data/ul/val.txt
+test_list: /mnt/jfs/zhaoxiaoyu/data/ul/test.txt
 
 # dataset properties
 load_name: F # F, list
@@ -24,9 +24,9 @@ bcs:
 
 batch_size: 1
 max_epochs: 30
-lr: 0.01
-# number of gpus to use
-gpus: 3
+lr: 0.001
+# the id of chosen gpu
+gpus: 0
 val_check_interval: 1.0
 # num_workers in dataloader
 num_workers: 4

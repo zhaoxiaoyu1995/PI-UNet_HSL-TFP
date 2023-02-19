@@ -1,21 +1,18 @@
-"""
-Runs a model on a single node across multiple gpus.
-"""
-from pathlib import Path
 import numpy as np
 import torch
-from torch.backends import cudnn
-import pytorch_lightning as pl
-from pytorch_lightning.callbacks import ModelCheckpoint
-
 import sys
 import os
+import pytorch_lightning as pl
+from torch.backends import cudnn
+from pathlib import Path
+from pytorch_lightning.callbacks import ModelCheckpoint
+
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
 
 from layout_data.utils.options import parses_ul
-from layout_data.models.model import UnetMultiScaleSoft
+from layout_data.models.model import UnetUL
 
 
 def main(hparams):
@@ -30,8 +27,7 @@ def main(hparams):
     # ------------------------
     # 1 INIT LIGHTNING MODEL
     # ------------------------
-    # model = FPNModelUL(hparams)
-    model = UnetMultiScaleSoft(hparams)
+    model = UnetUL(hparams)
     # ------------------------
     # 2 INIT TRAINER
     # ------------------------

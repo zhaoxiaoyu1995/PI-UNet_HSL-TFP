@@ -14,7 +14,8 @@ from layout_data.loss.ulloss import Jacobi_layer
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
-from layout_data.models.model import UnetMultiScale
+
+from layout_data.models.model import UnetUL
 from layout_data.utils.options import parses_ul
 
 
@@ -27,9 +28,9 @@ def main(hparams):
     torch.manual_seed(seed)
     cudnn.benchmark = True
 
-    model = UnetMultiScale(hparams).cuda()
+    model = UnetUL(hparams).cuda()
 
-    model_path = '/mnt/data3/zhaoxiaoyu/layout-data-master/example/lightning_logs/simple_sl_ohem_4000/checkpoints/epoch=29-step=239999.ckpt'
+    model_path = '/mnt/jfs/zhaoxiaoyu/PI-UNet_HSL-TFP/example/lightning_logs/version_0/checkpoints/epoch=29-step=239999.ckpt'
     model.load_state_dict(torch.load(model_path)['state_dict'])
     model.prepare_data()
     data_loader = model.test_dataloader()
@@ -71,17 +72,14 @@ def main(hparams):
     cmae_list = np.array(cmae_list)
     maxae_list = np.array(maxae_list)
     mtae_list = np.array(mtae_list)
-    print('-'*20)
+    print('-' * 20)
     print('Loss:', loss_list.mean())
     print('MAE:', mae_list.mean())
     print('CMAE:', cmae_list.mean())
     print('Max AE:', maxae_list.mean())
     print('MT AE:', mtae_list.mean())
-    sio.savemat('complex_batch_size_1_test.mat', {'loss': loss_list,
-                             'mae': mae_list,
-                             'cmae': cmae_list,
-                             'maxae': maxae_list,
-                             'mtae': mtae_list})
+    sio.savemat('complex_batch_size_1_test.mat',
+                {'loss': loss_list, 'mae': mae_list, 'cmae': cmae_list, 'maxae': maxae_list, 'mtae': mtae_list})
 
 
 if __name__ == "__main__":
